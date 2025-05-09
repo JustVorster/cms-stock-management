@@ -1,27 +1,81 @@
-# CmsStockManagement
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
+CMS Stock Management Frontend (Angular 17)
+==========================================
 
-## Development server
+This is the frontend SPA built with Angular 17 and Material Design. It provides a user-friendly interface for authenticating users and managing stock items.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Tech Stack
+----------
+- Angular 17 (standalone modules)
+- Angular Material 
+- JWT Auth
+- RxJS / HttpClient
 
-## Code scaffolding
+Requirements
+------------
+- Node.js v18+
+- Angular CLI v17+
+  npm install -g @angular/cli
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Setup & Run
+-----------
+1. Navigate to frontend
 
-## Build
+   cd stock-management-frontend
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. Install dependencies
 
-## Running unit tests
+   npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. Run development server
 
-## Running end-to-end tests
+   ng serve
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+4. Open in browser
 
-## Further help
+   http://localhost:4200
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Authentication
+--------------
+- Login and registration are built-in
+- JWT is stored in localStorage
+- Auto-attached to HTTP requests via Angular interceptor
+
+Features
+--------
+- Register/Login
+- View all stock items
+- Create new stock item
+- View up to 3 images per vehicle
+- Dark Material UI
+- Responsive layout
+- JWT-secured route guards
+
+Folder Highlights
+-----------------
+| Path                            | Description                  |
+|---------------------------------|------------------------------|
+| /auth                           | Login / register components  |
+| /services/auth.service.ts       | Handles login / JWT logic    |
+| /stock-items                    | List + create UI modules     |
+| /interceptors                   | Auto-attaches JWT to headers |
+| app.routes.ts                   | Angular standalone routing   |
+
+Environment
+-----------
+Configured to use:
+
+API: https://localhost:7140
+Frontend: http://localhost:4200
+
+No proxy needed — CORS enabled server-side.
+
+Build for Production
+--------------------
+ng build
+
+Status
+------
+Production-ready SPA frontend
+Fully integrated with backend
+Responsive and testable

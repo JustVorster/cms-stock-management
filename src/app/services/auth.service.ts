@@ -23,6 +23,10 @@ export class AuthService {
     );
   }
 
+  register(payload: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, payload);
+  }
+
   logout() {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('token');

@@ -1,1 +1,15 @@
-<p>stock-item-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Add New Stock Item</h2>
+
+  <mat-form-field appearance="fill"><mat-label>Reg No</mat-label><input matInput formControlName="regNo" /></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label>Make</mat-label><input matInput formControlName="make" /></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label>Model</mat-label><input matInput formControlName="model" /></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label>Model Year</mat-label><input matInput type="number" formControlName="modelYear" /></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label>KMs</mat-label><input matInput type="number" formControlName="kms" /></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label>Colour</mat-label><input matInput formControlName="colour" /></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label>VIN</mat-label><input matInput formControlName="vin" /></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label>Retail Price</mat-label><input matInput type="number" formControlName="retailPrice" /></mat-form-field>
+  <mat-form-field appearance="fill"><mat-label>Cost Price</mat-label><input matInput type="number" formControlName="costPrice" /></mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Save</button>
+</form>

@@ -1,18 +1,46 @@
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; // ✅ center cards horizontally
+  padding: 2rem;           // ✅ space around content
+  gap: 2rem;
 }
 
 .stock-card {
-    flex: 1 1 300px;
-    background: #1e1e1e;
-    color: white;
+  width: 320px;
+  background: #1e1e1e;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.stock-card:hover {
+  transform: scale(1.02);
 }
 
 .loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.thumbnail {
+  height: 80px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1);
 }

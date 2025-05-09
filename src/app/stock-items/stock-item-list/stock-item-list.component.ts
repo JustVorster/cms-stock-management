@@ -4,19 +4,30 @@ import { StockItem } from '../../models/stock-item';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ImageGalleryComponent } from '../image-gallery/image-gallery.component';
 
 @Component({
   selector: 'app-stock-item-list',
   standalone: true,
   templateUrl: './stock-item-list.component.html',
   styleUrls: ['./stock-item-list.component.scss'],
-  imports: [CommonModule, MatCardModule, MatProgressSpinnerModule]
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatDialogModule,
+    ImageGalleryComponent
+  ]
 })
 export class StockItemListComponent implements OnInit {
   items: StockItem[] = [];
   loading = true;
 
-  constructor(private stockService: StockItemService) {}
+  constructor(
+    private stockService: StockItemService,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.stockService.getAll().subscribe({
@@ -28,6 +39,16 @@ export class StockItemListComponent implements OnInit {
         console.error('Failed to load stock items:', err);
         this.loading = false;
       }
+    });
+  }
+
+  openGallery(images: { data: string }[]) {
+    const imageDataUrls = images.map(i => `data:image/png;base64,${i.data}`);
+    this.dialog.open(ImageGalleryComponent, {
+      data: { images: imageDataUrls },
+      width: '95vw',
+      height: '85vh',
+      panelClass: 'custom-gallery-dialog'
     });
   }
 }

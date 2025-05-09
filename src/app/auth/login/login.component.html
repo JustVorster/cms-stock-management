@@ -13,5 +13,9 @@
 
     <button mat-raised-button color="primary" type="submit">Login</button>
 
+    <p>
+        Don't have an account? <a routerLink="/register" style="color: #90caf9">Register here</a>
+    </p>
+
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
 </form>

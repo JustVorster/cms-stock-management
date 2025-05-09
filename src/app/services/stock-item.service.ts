@@ -12,4 +12,8 @@ export class StockItemService {
   getAll(): Observable<StockItem[]> {
     return this.http.get<StockItem[]>(this.apiUrl);
   }
+
+  create(item: any): Observable<any> {
+    return this.http.post(this.apiUrl, item);
+  }
 }

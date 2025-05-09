@@ -1,0 +1,36 @@
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #1e1e1e;
+  padding: 1rem;
+  position: relative;
+}
+
+img {
+  max-width: 90vw;
+  max-height: 70vh;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+.close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 1.5rem;
+}

@@ -1,0 +1,10 @@
+<div class="gallery-container">
+  <img [src]="data.images[currentIndex]" alt="Image" />
+
+  <div class="controls">
+    <button (click)="prev()" [disabled]="currentIndex === 0">◀</button>
+    <button (click)="next()" [disabled]="currentIndex === data.images.length - 1">▶</button>
+  </div>
+
+  <button class="close" (click)="close()">✖</button>
+</div>

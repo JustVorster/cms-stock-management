@@ -1,0 +1,22 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Register</h2>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Username</mat-label>
+    <input matInput formControlName="username" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password" />
+  </mat-form-field>
+
+  <button mat-raised-button type="submit" color="primary">Register</button>
+
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+</form>

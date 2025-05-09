@@ -1,0 +1,14 @@
+<div *ngIf="loading" class="loading-container">
+    <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="!loading && items.length > 0" class="card-container">
+    <mat-card *ngFor="let item of items" class="stock-card">
+        <h2>{{ item.make }} {{ item.model }} ({{ item.modelYear }})</h2>
+        <p><strong>Reg:</strong> {{ item.regNo }}</p>
+        <p><strong>KMS:</strong> {{ item.kms }}</p>
+        <p><strong>Colour:</strong> {{ item.colour }}</p>
+        <p><strong>VIN:</strong> {{ item.vin }}</p>
+        <p><strong>Retail:</strong> R{{ item.retailPrice }}</p>
+    </mat-card>
+</div>

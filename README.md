@@ -45,6 +45,7 @@ Features
 --------
 - Register/Login
 - View all stock items
+- Edit and Delete entries
 - Create new stock item
 - View up to 3 images per vehicle
 - Dark Material UI
@@ -65,7 +66,7 @@ Environment
 -----------
 Configured to use:
 
-API: https://localhost:7140
+API: http://localhost:41232/api/
 Frontend: http://localhost:4200
 
 No proxy needed — CORS enabled server-side.

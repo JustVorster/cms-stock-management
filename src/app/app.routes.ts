@@ -11,6 +11,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'stock-items', component: StockItemListComponent, canActivate: [AuthGuard] },
   { path: 'stock-items/create', component: StockItemFormComponent, canActivate: [AuthGuard] },
+  { path: 'stock-items/edit/:id', component: StockItemFormComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: '**', redirectTo: 'login' }
 ];

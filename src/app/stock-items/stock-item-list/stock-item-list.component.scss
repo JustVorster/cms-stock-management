@@ -1,8 +1,8 @@
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; // ✅ center cards horizontally
-  padding: 2rem;           // ✅ space around content
+  justify-content: center;
+  padding: 2rem;
   gap: 2rem;
 }
 
@@ -14,10 +14,33 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
   transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .stock-card:hover {
   transform: scale(1.02);
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+
+  button {
+    flex: 1;
+    font-weight: 600;
+  }
+
+  button {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+}
 }
 
 .loading-container {
@@ -32,6 +55,8 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 1rem;
+  border-top: 1px solid #444;
+  padding-top: 1rem;
 }
 
 .thumbnail {
@@ -39,8 +64,10 @@
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.2s ease;
+  border: 1px solid #555;
 }
 
 .thumbnail:hover {
   transform: scale(1.1);
+  border-color: #777;
 }

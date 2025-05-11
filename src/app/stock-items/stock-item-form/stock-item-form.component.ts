@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
 import { StockItemService } from '../../services/stock-item.service';
+import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StockItem } from '../../models/stock-item';
 
 @Component({
   selector: 'app-stock-item-form',
@@ -15,14 +17,19 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule
   ]
 })
-export class StockItemFormComponent {
+export class StockItemFormComponent implements OnInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  private stockService = inject(StockItemService);
+  private fb = inject(FormBuilder);
+
   form = this.fb.group({
+    id: [0],
     regNo: ['', Validators.required],
     make: ['', Validators.required],
     model: ['', Validators.required],
@@ -34,18 +41,30 @@ export class StockItemFormComponent {
     costPrice: [0]
   });
 
-  constructor(
-    private fb: FormBuilder,
-    private stockService: StockItemService,
-    private router: Router
-  ) {}
+  isEdit = false;
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.isEdit = true;
+      this.stockService.getById(+id).subscribe(item => {
+        this.form.patchValue(item);
+      });
+    }
+  }
 
   onSubmit() {
-    if (this.form.invalid) return;
+  if (this.form.invalid) return;
 
-    this.stockService.create(this.form.value).subscribe({
-      next: () => this.router.navigate(['/stock-items']),
-      error: err => console.error('Create error:', err)
-    });
-  }
+  const payload = this.form.value as Partial<StockItem>;
+
+  const action = this.isEdit
+    ? this.stockService.update(payload)
+    : this.stockService.create(payload);
+
+  action.subscribe({
+    next: () => this.router.navigate(['/stock-items']),
+    error: err => console.error('Submit error:', err)
+  });
+}
 }

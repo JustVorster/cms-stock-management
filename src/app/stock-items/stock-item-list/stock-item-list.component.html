@@ -11,6 +11,22 @@
   <p><strong>VIN:</strong> {{ item.vin }}</p>
   <p><strong>Retail:</strong> R{{ item.retailPrice | number:'1.0-0' }}</p>
 
+ <div class="card-actions">
+   <button
+    mat-stroked-button
+    color="accent"
+    [routerLink]="['/stock-items/edit', item.id]">
+    Edit
+   </button>
+
+   <button
+    mat-stroked-button
+    color="warn"
+    (click)="deleteItem(item.id)">
+    Delete
+   </button>
+ </div>
+
   <div *ngIf="item.images && item.images.length > 0" class="thumbnails">
     <img
       *ngFor="let img of item.images"

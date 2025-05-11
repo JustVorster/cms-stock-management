@@ -3,6 +3,8 @@ import { StockItemService } from '../../services/stock-item.service';
 import { StockItem } from '../../models/stock-item';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ImageGalleryComponent } from '../image-gallery/image-gallery.component';
@@ -15,6 +17,8 @@ import { ImageGalleryComponent } from '../image-gallery/image-gallery.component'
   imports: [
     CommonModule,
     MatCardModule,
+    MatButtonModule,
+    RouterModule,
     MatProgressSpinnerModule,
     MatDialogModule,
     ImageGalleryComponent
@@ -41,6 +45,15 @@ export class StockItemListComponent implements OnInit {
       }
     });
   }
+
+  deleteItem(id: number) {
+  if (confirm('Are you sure you want to delete this item?')) {
+    this.stockService.delete(id).subscribe({
+      next: () => this.items = this.items.filter(i => i.id !== id),
+      error: err => console.error('Delete failed', err)
+    });
+  }
+}
 
   openGallery(images: { data: string }[]) {
     const imageDataUrls = images.map(i => `data:image/png;base64,${i.data}`);
